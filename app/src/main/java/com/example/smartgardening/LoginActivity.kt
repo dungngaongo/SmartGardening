@@ -19,7 +19,9 @@ class LoginActivity : AppCompatActivity() {
         val btnBack = findViewById<android.widget.ImageButton>(R.id.btnBack)
 
         btnSignIn.setOnClickListener {
-            Toast.makeText(this, "Đang xử lý đăng nhập...", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         tvSignUp.setOnClickListener {
