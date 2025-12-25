@@ -33,9 +33,9 @@
             android:name=".MainActivity"
             android:exported="false" />
 
-<!--        <activity-->
-<!--            android:name=".PumpModeActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".PumpModesActivity"
+            android:exported="false" />
 
         <activity
             android:name=".TemperatureActivity"

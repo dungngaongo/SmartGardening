@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         val cardTemp = findViewById<CardView>(R.id.cardTemp)
         val cardHumid = findViewById<CardView>(R.id.cardHumid)
         val cardMoisture = findViewById<CardView>(R.id.cardMoisture)
-//        val cardPump = findViewById<CardView>(R.id.cardPump)
+        val cardPump = findViewById<CardView>(R.id.cardPump)
 
         // 2. Thiết lập sự kiện bấm cho từng ô
 
@@ -38,11 +38,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        // Mở màn hình Chế độ bơm
-//        cardPump.setOnClickListener {
-//            // Chú ý: Đổi tên PumpModesActivity cho đúng với file bạn đã tạo
-//            val intent = Intent(this, PumpModesActivity::class.java)
-//            startActivity(intent)
-//        }
+        // Mở màn hình Chế độ bơm
+        cardPump.setOnClickListener {
+            // Chú ý: Đổi tên PumpModesActivity cho đúng với file bạn đã tạo
+            val intent = Intent(this, PumpModesActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

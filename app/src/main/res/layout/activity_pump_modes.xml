@@ -21,15 +21,15 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Quay lại"
                 android:src="@drawable/ic_chevron_left"
-                app:tint="#1D431F"
-                android:contentDescription="Quay lại màn hình trước"/>
+                app:tint="#1D431F" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Pump Modes"
+                android:text="Điều khiển máy bơm"
                 android:textColor="#1D431F"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -38,9 +38,47 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="32dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPumpPower"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    app:backgroundTint="#1D431F"
+                    app:cornerRadius="60dp"
+                    app:icon="@drawable/ic_power"
+                    app:iconSize="48dp"
+                    app:iconTint="#FFFFFF"
+                    app:strokeColor="#FFFFFF"
+                    app:strokeWidth="4dp" />
+
+                <TextView
+                    android:id="@+id/tvPumpStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="MÁY BƠM ĐANG TẮT"
+                    android:textColor="#1D431F"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="28dp"
-            app:cardElevation="2dp">
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,90 +89,53 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imgManual"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@drawable/ic_power"
-                        app:tint="#1D431F" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="12dp"
-                        android:layout_toEndOf="@id/imgManual"
-                        android:text="Manual Mode"
+                        android:text="Chế độ hẹn giờ"
                         android:textColor="#1D431F"
-                        android:textStyle="bold" />
-
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
                     <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/swManualPump"
+                        android:id="@+id/swScheduleMode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Bật hoặc tắt máy bơm ngay lập tức bằng tay."
-                    android:textColor="#7D8C8D"
-                    android:textSize="12sp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="28dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Schedule Mode"
-                    android:textColor="#1D431F"
-                    android:textStyle="bold" />
-
                 <LinearLayout
+                    android:id="@+id/layoutScheduleSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
                     <Button
-                        android:id="@+id/btnStartTime"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
+                        android:id="@+id/btnSelectTime"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Start: 06:00"
-                        android:textAllCaps="false"
-                        app:cornerRadius="16dp" />
+                        android:text="Giờ: 07:00"
+                        android:textColor="#1D431F" />
 
-                    <View
-                        android:layout_width="12dp"
-                        android:layout_height="0dp" />
+                    <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
 
-                    <Button
-                        android:id="@+id/btnEndTime"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
+                    <EditText
+                        android:id="@+id/etDuration"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="End: 06:30"
-                        android:textAllCaps="false"
-                        app:cornerRadius="16dp" />
+                        android:hint="30"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:background="@drawable/bg_edittext"
+                        android:padding="8dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="giây"
+                        android:textColor="#7D8C8D"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -142,8 +143,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="28dp"
-            app:cardElevation="2dp">
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,41 +155,53 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Auto Mode"
+                        android:text="Chế độ tự động"
                         android:textColor="#1D431F"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvThresholdValue"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swAutoMode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="30%"
-                        android:textColor="#1D431F"
-                        android:textStyle="bold" />
+                        android:layout_alignParentEnd="true" />
                 </RelativeLayout>
 
-                <SeekBar
-                    android:id="@+id/sbThreshold"
+                <LinearLayout
+                    android:id="@+id/layoutAutoSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:max="100"
-                    android:progress="30"
-                    android:progressTint="#1D431F"
-                    android:thumbTint="#1D431F" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Máy bơm tự động chạy khi độ ẩm đất thấp hơn mức cài đặt."
-                    android:textColor="#7D8C8D"
-                    android:textSize="12sp" />
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ngưỡng độ ẩm đất"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:id="@+id/tvThresholdValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="30%"
+                            android:textColor="#1D431F"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+                    <SeekBar
+                        android:id="@+id/sbThreshold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:max="100"
+                        android:progress="30"
+                        android:progressTint="#1D431F"
+                        android:thumbTint="#1D431F" />
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
