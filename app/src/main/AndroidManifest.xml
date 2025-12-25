@@ -32,6 +32,22 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+<!--        <activity-->
+<!--            android:name=".PumpModeActivity"-->
+<!--            android:exported="false" />-->
+
+        <activity
+            android:name=".TemperatureActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".HumidityActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MoistureActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
