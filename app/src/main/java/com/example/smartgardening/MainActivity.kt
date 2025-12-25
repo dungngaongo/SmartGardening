@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         val cardHumid = findViewById<CardView>(R.id.cardHumid)
         val cardMoisture = findViewById<CardView>(R.id.cardMoisture)
         val cardPump = findViewById<CardView>(R.id.cardPump)
+        val cardWater = findViewById<CardView>(R.id.cardWater)
 
         // 2. Thiết lập sự kiện bấm cho từng ô
 
@@ -43,6 +44,10 @@ class MainActivity : AppCompatActivity() {
             // Chú ý: Đổi tên PumpModesActivity cho đúng với file bạn đã tạo
             val intent = Intent(this, PumpModesActivity::class.java)
             startActivity(intent)
+        }
+
+        cardWater.setOnClickListener {
+            startActivity(Intent(this, WaterLevelActivity::class.java))
         }
     }
 }

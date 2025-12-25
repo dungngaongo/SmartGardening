@@ -48,6 +48,10 @@
         <activity
             android:name=".MoistureActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".WaterLevelActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
