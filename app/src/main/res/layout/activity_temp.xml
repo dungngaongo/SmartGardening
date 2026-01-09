@@ -74,6 +74,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_status_tag"
@@ -104,7 +105,7 @@
             android:layout_marginEnd="8dp"
             android:orientation="vertical">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Min Today" android:textSize="12sp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22°C" android:textStyle="bold" android:textColor="#1D431F" android:textSize="18sp"/>
+            <TextView android:id="@+id/tvMinValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22°C" android:textStyle="bold" android:textColor="#1D431F" android:textSize="18sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -116,7 +117,7 @@
             android:layout_marginStart="8dp"
             android:orientation="vertical">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Max Today" android:textSize="12sp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="32°C" android:textStyle="bold" android:textColor="#1D431F" android:textSize="18sp"/>
+            <TextView android:id="@+id/tvMaxValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="32°C" android:textStyle="bold" android:textColor="#1D431F" android:textSize="18sp"/>
         </LinearLayout>
     </LinearLayout>
 

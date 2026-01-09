@@ -50,7 +50,6 @@
                 <FrameLayout
                     android:layout_width="100dp"
                     android:layout_height="180dp">
-
                     <ProgressBar
                         android:id="@+id/pbWaterTank"
                         style="?android:attr/progressBarStyleHorizontal"
@@ -66,7 +65,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:orientation="vertical">
-
                     <TextView
                         android:id="@+id/tvWaterPercent"
                         android:layout_width="wrap_content"
@@ -75,7 +73,6 @@
                         android:textColor="#2196F3"
                         android:textSize="48sp"
                         android:textStyle="bold" />
-
                     <TextView
                         android:id="@+id/tvWaterStatus"
                         android:layout_width="wrap_content"
@@ -111,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:gravity="center_vertical">
-                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Chiều cao bồn (cm)"/>
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Chiều cao đáy (cm)"/>
                     <EditText
                         android:id="@+id/etTankHeight"
                         android:layout_width="80dp"
@@ -128,7 +125,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:gravity="center_vertical">
-                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Cảnh báo khi dưới (%)"/>
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Khoảng hở trên (cm)"/>
+                    <EditText
+                        android:id="@+id/etWaterOffset"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:hint="4"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:background="@drawable/bg_edittext"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical">
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Cảnh báo cạn (%)"/>
                     <EditText
                         android:id="@+id/etLowWarning"
                         android:layout_width="80dp"
