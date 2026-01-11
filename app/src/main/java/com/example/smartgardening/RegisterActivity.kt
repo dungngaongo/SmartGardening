@@ -1,14 +1,16 @@
 package com.example.smartgardening
 
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
+import android.text.InputType
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smartgardening.firebase.FirebaseAuthManager
 import com.google.android.material.button.MaterialButton
 
 class RegisterActivity : AppCompatActivity() {
+
+    private var isPasswordVisible = false
+    private var isConfirmPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,58 +19,88 @@ class RegisterActivity : AppCompatActivity() {
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         val etName = findViewById<EditText>(R.id.etName)
         val etEmail = findViewById<EditText>(R.id.etEmail)
-
-
         val etPassword = findViewById<EditText>(R.id.etPassword)
-        val etLocation = findViewById<EditText>(R.id.etLocation)
+        val etConfirmPassword = findViewById<EditText>(R.id.etConfirmPassword)
+
+        val ivTogglePassword = findViewById<ImageView>(R.id.ivTogglePassword)
+        val ivToggleConfirmPassword = findViewById<ImageView>(R.id.ivToggleConfirmPassword)
 
         val btnSignUp = findViewById<MaterialButton>(R.id.btnSignUp)
         val btnGoogle = findViewById<MaterialButton>(R.id.btnGoogle)
 
-        // 2. Xử lý sự kiện nút Back
-        btnBack.setOnClickListener {
-            finish()
+        // Back
+        btnBack.setOnClickListener { finish() }
+
+        // 👁 Toggle password
+        ivTogglePassword.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            togglePassword(etPassword, ivTogglePassword, isPasswordVisible)
         }
 
-        // 3. Xử lý Đăng Ký
+        ivToggleConfirmPassword.setOnClickListener {
+            isConfirmPasswordVisible = !isConfirmPasswordVisible
+            togglePassword(etConfirmPassword, ivToggleConfirmPassword, isConfirmPasswordVisible)
+        }
+
+        // Đăng ký
         btnSignUp.setOnClickListener {
             val name = etName.text.toString().trim()
             val email = etEmail.text.toString().trim()
-            val password = etPassword.text.toString().trim()
-            val location = etLocation.text.toString().trim()
+            val password = etPassword.text.toString()
+            val confirmPassword = etConfirmPassword.text.toString()
 
-            // Validate dữ liệu (Kiểm tra rỗng)
-            if (name.isEmpty() || email.isEmpty() || password.isEmpty() || location.isEmpty()) {
-                Toast.makeText(this, "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show()
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                toast("Vui lòng điền đầy đủ thông tin!")
                 return@setOnClickListener
             }
 
             if (password.length < 6) {
-                Toast.makeText(this, "Mật khẩu phải từ 6 ký tự trở lên", Toast.LENGTH_SHORT).show()
+                toast("Mật khẩu phải từ 6 ký tự trở lên")
                 return@setOnClickListener
             }
 
-            // Hiển thị thông báo chờ
-            Toast.makeText(this, "Đang tạo tài khoản...", Toast.LENGTH_SHORT).show()
-            btnSignUp.isEnabled = false // Khóa nút để tránh bấm nhiều lần
+            if (password != confirmPassword) {
+                toast("Mật khẩu xác nhận không khớp")
+                return@setOnClickListener
+            }
 
-            // Gọi Firebase Auth
-            FirebaseAuthManager.register(email, password) { isSuccess, message ->
+            btnSignUp.isEnabled = false
+            toast("Đang tạo tài khoản...")
+
+            FirebaseAuthManager.register(email, password) { success, message ->
                 btnSignUp.isEnabled = true
-
-                if (isSuccess) {
-                    // Ở đây bạn có thể lưu thêm Name và Location vào Firestore (Bước sau)
-                    Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show()
+                if (success) {
+                    toast("Đăng ký thành công!")
                     finish()
                 } else {
-                    Toast.makeText(this, "Lỗi: $message", Toast.LENGTH_LONG).show()
+                    toast("Lỗi: $message")
                 }
             }
         }
 
-        // 4. Nút Google (Chưa xử lý logic)
         btnGoogle.setOnClickListener {
-            Toast.makeText(this, "Chức năng đang phát triển", Toast.LENGTH_SHORT).show()
+            toast("Chức năng đang phát triển")
         }
+    }
+
+    private fun togglePassword(
+        editText: EditText,
+        imageView: ImageView,
+        isVisible: Boolean
+    ) {
+        if (isVisible) {
+            editText.inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            imageView.setImageResource(R.drawable.ic_eye_on)
+        } else {
+            editText.inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            imageView.setImageResource(R.drawable.ic_eye_off)
+        }
+        editText.setSelection(editText.text.length)
+    }
+
+    private fun toast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }
