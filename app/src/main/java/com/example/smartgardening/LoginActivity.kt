@@ -9,6 +9,8 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smartgardening.firebase.FirebaseAuthManager
 import com.google.android.material.button.MaterialButton
+import android.widget.ImageView
+import android.text.InputType
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,6 +27,26 @@ class LoginActivity : AppCompatActivity() {
         val tvSignUp = findViewById<TextView>(R.id.tvSignUp)
         val tvRecovery = findViewById<TextView>(R.id.tvRecovery)
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
+
+        var isPasswordVisible = false
+        val ivTogglePassword = findViewById<ImageView>(R.id.ivTogglePassword)
+
+        ivTogglePassword.setOnClickListener {
+            if (isPasswordVisible) {
+                etPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or
+                            InputType.TYPE_TEXT_VARIATION_PASSWORD
+                ivTogglePassword.setImageResource(R.drawable.ic_eye_off)
+            } else {
+                etPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or
+                            InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                ivTogglePassword.setImageResource(R.drawable.ic_eye_on)
+            }
+
+            etPassword.setSelection(etPassword.text.length)
+            isPasswordVisible = !isPasswordVisible
+        }
 
         // Đăng nhập
         btnSignIn.setOnClickListener {

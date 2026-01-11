@@ -12,10 +12,10 @@ object MqttManager {
     private const val TAG = "MQTT"
 
     // 🔐 THAY BẰNG THÔNG TIN CỦA BẠN
-    private const val HOST = "dfd00c2bf1074cb08c8b438315866cf1.s1.eu.hivemq.cloud"
+    private const val HOST = "7882f49ec5a24abc9c49b6c8332f73e4.s1.eu.hivemq.cloud"
     private const val PORT = 8883
-    private const val USERNAME = "quan12345"
-    private const val PASSWORD = "Quandosieudeptrai12345"
+    private const val USERNAME = "hayson"
+    private const val PASSWORD = "Alo123,./"
 
     private lateinit var client: Mqtt5AsyncClient
 
